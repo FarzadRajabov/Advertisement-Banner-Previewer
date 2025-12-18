@@ -52,13 +52,13 @@ body {
   height: 800px;
 }
 
-/* ===== PHONE BODY ===== */
+/* ===== MOBILE DEVICE ===== */
 .phone-frame {
   width: 360px;
   height: 740px;
-  background: #0f172a; /* Dark bezel color */
+  background: #0f172a; 
   border-radius: 40px;
-  padding: 12px; /* This is the bezel thickness */
+  padding: 12px; 
   box-shadow: 0 40px 80px rgba(0,0,0,0.45);
 }
 
@@ -73,21 +73,20 @@ body {
   flex-direction: column;
 }
 
-/* ===== UPDATED CAMERA (Xiaomi Style) ===== */
 .phone-notch {
   position: absolute;
-  top: 10px;           /* Distance from top edge */
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 14px;         /* Small dot width */
-  height: 14px;        /* Small dot height */
-  background: #000;    /* Camera lens color */
-  border-radius: 50%;  /* Make it a perfect circle */
-  z-index: 20;         /* Sit on top of everything */
-  border: 1px solid #222; /* Subtle rim detail */
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 20;
+  border: 1px solid #222;
 }
 
-/* ===== ADS ===== */
+/* ===== AD CONTAINERS ===== */
 .top-ad {
   width: 100%;
   height: 120px;
@@ -101,7 +100,6 @@ body {
   object-fit: cover;
 }
 
-/* Mobile Ad Specifics */
 .top-ad.mobile-top-ad {
   height: auto !important;
   min-height: 50px;
@@ -129,8 +127,8 @@ body {
   font-weight: 600;
 }
 
-/* ===== NAVIGATION ===== */
-.phone-screen .top-bar { display: none; } /* Hide white bar on mobile */
+/* ===== UI ELEMENTS ===== */
+.phone-screen .top-bar { display: none; }
 
 .top-bar {
   background: white;
@@ -156,7 +154,6 @@ body {
   border-radius: 6px;
 }
 
-/* ===== BODY CONTENT ===== */
 .container { 
   padding: 20px; 
   flex: 1; 
@@ -182,45 +179,64 @@ body {
 .popup-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.65);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 50;
+  z-index: 100;
 }
 
 .popup-overlay.active { opacity: 1; pointer-events: auto; }
 
 .popup {
   width: 320px;
-  height: 440px;
-  background: #e5e7eb;
+  height: 480px; 
+  background: #fff;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
-  animation: popIn 0.4s ease forwards;
+  display: flex;
+  flex-direction: column;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-@keyframes popIn { from { transform: scale(0.85); } to { transform: scale(1); } }
+/* Mobile popup anim */
+.phone-screen .popup {
+  width: 85%;
+  max-height: 75%;
+}
 
-.popup img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes popIn { 
+  from { transform: scale(0.8); opacity: 0; } 
+  to { transform: scale(1); opacity: 1; } 
+}
+
+.popup img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+  background: #000; 
+}
 
 .countdown {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 36px;
-  height: 36px;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.8);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  font-size: 14px;
+  z-index: 101;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.countdown.ready { cursor: pointer; font-size: 18px; }
+.countdown.ready { cursor: pointer; }
