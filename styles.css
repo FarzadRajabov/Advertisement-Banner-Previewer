@@ -1,0 +1,226 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+/* ===== CONTROLS & LAYOUT ===== */
+.controls {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 12px;
+  border-bottom: 1px solid #d1d5db;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  z-index: 100;
+}
+
+.hint { font-size: 13px; color: #6b7280; }
+
+.preview-layout {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.preview-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.preview-label { font-size: 14px; font-weight: 600; }
+
+.preview-frame {
+  background: #f9fafb;
+  border: 2px solid #9ca3af;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+  overflow: hidden;
+  position: relative;
+}
+
+.desktop-frame {
+  width: 1200px;
+  height: 800px;
+}
+
+/* ===== PHONE BODY ===== */
+.phone-frame {
+  width: 360px;
+  height: 740px;
+  background: #0f172a; /* Dark bezel color */
+  border-radius: 40px;
+  padding: 12px; /* This is the bezel thickness */
+  box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+}
+
+.phone-screen {
+  background: #f9fafb;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== UPDATED CAMERA (Xiaomi Style) ===== */
+.phone-notch {
+  position: absolute;
+  top: 10px;           /* Distance from top edge */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;         /* Small dot width */
+  height: 14px;        /* Small dot height */
+  background: #000;    /* Camera lens color */
+  border-radius: 50%;  /* Make it a perfect circle */
+  z-index: 20;         /* Sit on top of everything */
+  border: 1px solid #222; /* Subtle rim detail */
+}
+
+/* ===== ADS ===== */
+.top-ad {
+  width: 100%;
+  height: 120px;
+  background: #e5e7eb;
+  position: relative;
+}
+
+.top-ad img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile Ad Specifics */
+.top-ad.mobile-top-ad {
+  height: auto !important;
+  min-height: 50px;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-ad.mobile-top-ad img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+.ad-placeholder {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* ===== NAVIGATION ===== */
+.phone-screen .top-bar { display: none; } /* Hide white bar on mobile */
+
+.top-bar {
+  background: white;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav {
+  background: #4b66a4;
+  padding: 12px 16px;
+  display: flex;
+  gap: 16px;
+  color: white;
+  align-items: center;
+}
+
+.logo { font-weight: 800; }
+
+.nav-item {
+  width: 70px;
+  height: 12px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 6px;
+}
+
+/* ===== BODY CONTENT ===== */
+.container { 
+  padding: 20px; 
+  flex: 1; 
+  overflow-y: auto; 
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.phone-screen .grid { grid-template-columns: 1fr; }
+
+.card {
+  background: white;
+  border-radius: 14px;
+  height: 160px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== POPUP ===== */
+.popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 50;
+}
+
+.popup-overlay.active { opacity: 1; pointer-events: auto; }
+
+.popup {
+  width: 320px;
+  height: 440px;
+  background: #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  animation: popIn 0.4s ease forwards;
+}
+
+@keyframes popIn { from { transform: scale(0.85); } to { transform: scale(1); } }
+
+.popup img { width: 100%; height: 100%; object-fit: cover; }
+
+.countdown {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.countdown.ready { cursor: pointer; font-size: 18px; }
