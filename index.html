@@ -3,17 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ad Preview</title>
+  <title>Ad Preview Tool</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <div class="controls">
-  Banner &#x2192; 
-  <input type="file" id="bannerInput" accept="image/*" /> 
-  Popup &#x2192;
-  <input type="file" id="popupInput" accept="image/*" />
-  <div class="hint">Banner & popup ayratyn goshmaly (bannerlar we popuplar uchin test giflar we suratlar bardyr folderda)</div>
+  <label>
+    Banner:
+    <input type="file" id="bannerInput" accept="image/*" multiple />
+  </label>
+
+  <small class="multi-hint" style="align-self:center;color:#6b7280;">
+    Birden kop banner goshup bolya
+  </small>
+
+  <label>
+    Banner display time:
+    <select id="bannerDisplayTime">
+      <option value="3">3s</option>
+      <option value="5" selected>5s</option>
+      <option value="8">8s</option>
+      <option value="10">10s</option>
+    </select>
+  </label>
+
+  <label>
+    Popup:
+    <input type="file" id="popupInput" accept="image/*" />
+  </label>
+
+  <label>
+    Popup delay:
+    <select id="popupDelay">
+      <option value="0">0s</option>
+      <option value="3">3s</option>
+      <option value="5" selected>5s</option>
+      <option value="10">10s</option>
+    </select>
+  </label>
+
+  <label>
+    Close after:
+    <select id="popupCloseDelay">
+      <option value="0">0s</option>
+      <option value="3">3s</option>
+      <option value="5" selected>5s</option>
+    </select>
+  </label>
+
+  <button id="retryPopupBtn">Retry popup</button>
+
+  <label>
+    Phone width:
+    <input type="range" id="phoneWidth" min="320" max="430" value="360" step="10">
+    <span id="phoneWidthValue">360px</span>
+  </label>
+
+  <div class="hint">
+    Banner & popup ayratyn goshmaly. Bu sahypa hakyky reklama davranşyny preview edýär.
+  </div>
+</div>
+
+<!-- banner queue (thumbnails) -->
+<div class="banner-queue-wrap" style="display:flex;justify-content:center;padding:6px 0;">
+  <ul id="bannerList" class="banner-list"></ul>
 </div>
 
 <div class="preview-layout">
@@ -22,15 +76,25 @@
   <div class="preview-block">
     <div class="preview-label">Desktop Preview</div>
     <div class="preview-frame desktop-frame" id="desktopFrame">
-      <div class="top-ad" id="desktopBanner"><div class="ad-placeholder">Desktop Banner</div></div>
+
+      <div class="top-ad" id="desktopBanner">
+        <div class="ad-placeholder">Desktop Banner</div>
+      </div>
+
       <div class="top-bar"></div>
-      <div class="nav"><div class="logo">tmcars</div><div class="nav-item"></div><div class="nav-item"></div></div>
+      <div class="nav">
+        <div class="logo">tmcars</div>
+        <div class="nav-item"></div>
+        <div class="nav-item"></div>
+      </div>
+
       <div class="container">
         <div class="grid">
           <div class="card"></div><div class="card"></div><div class="card"></div>
           <div class="card"></div><div class="card"></div><div class="card"></div>
         </div>
       </div>
+
       <div class="popup-overlay" id="desktopPopupOverlay">
         <div class="popup" id="desktopPopup"></div>
       </div>
@@ -40,16 +104,30 @@
   <!-- MOBILE -->
   <div class="preview-block">
     <div class="preview-label">Mobile Preview</div>
-    <div class="phone-frame">
+
+    <div class="phone-frame" id="phoneFrame">
       <div class="phone-screen" id="mobileScreen">
+
         <div class="phone-notch"></div>
-        <div class="top-ad mobile-top-ad" id="mobileBanner"><div class="ad-placeholder">Mobile Banner</div></div>
-        <div class="top-bar"></div>
-        <div class="nav"><div class="logo">tmcars</div></div>
-        <div class="container"></div>
+
+        <div class="top-ad mobile-top-ad" id="mobileBanner">
+          <div class="ad-placeholder">Mobile Banner</div>
+        </div>
+
+        <div class="nav">
+          <div class="logo">tmcars</div>
+        </div>
+
+        <div class="container">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
+
         <div class="popup-overlay" id="mobilePopupOverlay">
           <div class="popup" id="mobilePopup"></div>
         </div>
+
       </div>
     </div>
   </div>
