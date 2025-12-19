@@ -15,7 +15,7 @@ const popupCloseDelaySelect = document.getElementById("popupCloseDelay");
 
 const bannerDisplayTime = document.getElementById("bannerDisplayTime");
 const bannerListEl = document.getElementById("bannerList");
-const retryBtn = document.getElementById("retryPopupBtn"); // added (was missing)
+const retryBtn = document.getElementById("retryPopupBtn"); 
 
 // PHONE WIDTH CONTROLS
 const phoneFrame = document.getElementById("phoneFrame");
@@ -34,11 +34,11 @@ if (phoneFrame && phoneWidth && phoneWidthValue) {
 }
 
 /* ======================================================
-   BANNER PLAYLIST (persistent cycle)
+   BANNER ADS
 ====================================================== */
 
-let banners = [];            // playlist: [{id, src}, ...]
-let currentIndex = -1;       // index in playlist currently shown
+let banners = [];     
+let currentIndex = -1;       
 let bannerTimer = null;
 
 function genId() {
@@ -163,7 +163,7 @@ function renderPopupContent(target, imageSrc = null) {
   `;
 }
 
-/* Initial placeholder (important!) */
+/* Initial placeholder */
 renderPopupContent(desktopPopup);
 renderPopupContent(mobilePopup);
 

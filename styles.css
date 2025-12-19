@@ -22,7 +22,6 @@ body {
   z-index: 100;
 }
 
-/* Controls — nicer, compact pill-style controls */
 .controls {
   gap: 10px;
   padding: 10px 16px;
@@ -32,7 +31,7 @@ body {
   border-radius: 0 0 12px 12px;
 }
 
-/* make each label a compact control block */
+
 .controls label {
   display: flex;
   flex-direction: column;
@@ -46,13 +45,13 @@ body {
   transition: background .15s, transform .08s;
 }
 
-/* subtle hover highlight on controls */
+
 .controls label:hover {
   background: rgba(99,102,241,0.06);
   transform: translateY(-2px);
 }
 
-/* unified input/select/range/button appearance in controls */
+
 .controls input[type="file"],
 .controls select,
 .controls input[type="range"] {
@@ -74,7 +73,7 @@ body {
   cursor: pointer;
 }
 
-/* retry button — prominent CTA */
+
 #retryPopupBtn {
   padding: 8px 12px;
   border-radius: 10px;
@@ -335,8 +334,8 @@ body {
   box-shadow: 0 0 0 3px rgba(75,102,164,0.08);
 }
 
-/* optional small hint styling */
 .multi-hint { font-size: 12px; margin-left: 6px; }
+
 /* banner queue container */
 .banner-queue-wrap {
   padding: 8px 12px;
